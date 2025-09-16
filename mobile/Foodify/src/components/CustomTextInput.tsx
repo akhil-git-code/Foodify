@@ -8,7 +8,6 @@ import {
   Image,
   ViewStyle,
   Pressable,
-  TextStyle,
   TextInput as RNTextInput,
 } from 'react-native';
 import {ThemeContext} from '../theme/ThemeContext';
@@ -100,7 +99,6 @@ const CustomTextInput: React.FC<Props> = ({
                   ? horizontalScale(40)
                   : horizontalScale(12),
               top: shouldFloat ? verticalScale(2) : verticalScale(14),
-              fontSize: shouldFloat ? moderateScale(12) : moderateScale(14),
             },
           ]}
           onPress={() => inputRef.current?.focus()}>
@@ -110,6 +108,7 @@ const CustomTextInput: React.FC<Props> = ({
                 ? theme.smallPlaeholderText
                 : theme.placeHolderText,
               fontFamily: getFontFamily(true, 'normal'),
+              fontSize: shouldFloat ? moderateScale(12) : moderateScale(14),
             }}>
             {placeholder}
           </Text>
@@ -120,13 +119,13 @@ const CustomTextInput: React.FC<Props> = ({
         ref={inputRef}
         value={value}
         onChangeText={setValue}
-        onFocus={e => {
+        onFocus={() => {
           if (!disableKeyboard) {
             setIsFocused(true);
             onFocus?.();
           }
         }}
-        onBlur={e => {
+        onBlur={() => {
           setIsFocused(false);
           onBlur?.();
         }}
@@ -141,10 +140,8 @@ const CustomTextInput: React.FC<Props> = ({
         style={[
           styles.input,
           {color: theme.text},
-          multiline
-            ? {textAlignVertical: 'top', paddingTop: verticalScale(10)}
-            : {textAlignVertical: 'center'},
-          !placeholder && {paddingTop: 0},
+          multiline ? styles.inputMultilineTop : styles.inputSinglelineCenter,
+          !placeholder && styles.inputNoPlaceholder,
         ]}
       />
 
@@ -157,7 +154,7 @@ const CustomTextInput: React.FC<Props> = ({
           />
         </Pressable>
       )}
-      {crossBTNhandle && (
+      {crossBTNhandle && theme.topCrossLogo && (
         <Pressable style={styles.crossBtn} onPress={() => setValue?.('')}>
           <Image source={theme.topCrossLogo} style={styles.crossIcon} />
         </Pressable>
@@ -195,6 +192,16 @@ const styles = StyleSheet.create({
     includeFontPadding: false,
     paddingTop: 10,
     paddingBottom: 0,
+  },
+  inputMultilineTop: {
+    textAlignVertical: 'top',
+    paddingTop: verticalScale(10),
+  },
+  inputSinglelineCenter: {
+    textAlignVertical: 'center',
+  },
+  inputNoPlaceholder: {
+    paddingTop: 0,
   },
   searchbtn: {
     position: 'absolute',

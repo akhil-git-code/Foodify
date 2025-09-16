@@ -4,7 +4,12 @@ import SplashScreen from '../screens/SplashScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import FirstBordingScreen from '../screens/onBordingScreens/FirstBordingScreen';
 import SecondBordingScreen from '../screens/onBordingScreens/SecondBordingScreen';
-import LoginScreen from '../screens/LoginScreen';
+import LoginScreen from '../screens/auth/LoginScreen';
+import RegisterScreen from '../screens/auth/RegisterScreen';
+import VerifyEmail from '../screens/auth/VerifyEmail';
+import SuccessScreen from '../screens/auth/SuccessScreen';
+import HomeScreen from '../screens/main/HomeScreen';
+import BottomTabs from './BottomTabs';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +35,31 @@ const AuthNavigator = () => {
         <Stack.Screen
           name="LoginScreen"
           component={LoginScreen}
+          options={{animation: 'slide_from_right'}}
+        />
+        <Stack.Screen
+          name="RegisterScreen"
+          component={RegisterScreen}
+          options={{animation: 'slide_from_right'}}
+        />
+        <Stack.Screen
+          name="VerifyEmail"
+          component={VerifyEmail}
+          options={{animation: 'slide_from_right'}}
+        />
+        <Stack.Screen
+          name="SuccessScreen"
+          component={SuccessScreen}
+          options={{animation: 'slide_from_right'}}
+        />
+        <Stack.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{animation: 'slide_from_right'}}
+        />
+        <Stack.Screen
+          name="MyApp"
+          component={BottomTabs}
           options={{animation: 'slide_from_right'}}
         />
       </Stack.Navigator>

@@ -29,6 +29,16 @@ export const globalStyles = theme =>
       fontSize: moderateScale(20),
       color: theme.text,
     },
+    medium14: {
+      fontFamily: getFontFamily(true, 'medium'),
+      fontSize: moderateScale(13),
+      color: theme.text,
+    },
+    medium17: {
+      fontFamily: getFontFamily(true, 'medium'),
+      fontSize: moderateScale(17),
+      color: theme.coloredText,
+    },
     regular12:{
       fontFamily: getFontFamily(true, 'normal'),
       fontSize: moderateScale(12),

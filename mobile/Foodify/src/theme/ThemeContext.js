@@ -10,7 +10,9 @@ const lightTheme = {
   mainLogo: require('../../assets/images/logoYellow.png'),
   text: '#252525',
   subText: '#A8A9A9',
+  coloredText: '#FDD835',
   textfieldBackground: 'rgba(251, 223, 106, 0.2)',
+  bottomTabs: '#FDD835',
 };
 const darkTheme = {
   mode: 'dark',
@@ -18,7 +20,9 @@ const darkTheme = {
   mainLogo: require('../../assets/images/logoWhite.png'),
   text: '#FFFFFF',
   subText: '#FFFFFF',
+  coloredText: '#FFFFFF',
   textfieldBackground: '#EDEDED',
+  bottomTabs: '#FFFFFF',
 };
 
 export const ThemeProvider = ({children}) => {
@@ -35,7 +39,7 @@ export const ThemeProvider = ({children}) => {
         // fallback to system
         // const systemTheme = Appearance.getColorScheme();
         // setTheme(systemTheme === 'dark' ? darkTheme : lightTheme);
-        setTheme(darkTheme);
+        setTheme(lightTheme);
       }
     };
     loadTheme();
